@@ -21,18 +21,18 @@ __  ____  __  _____   ___  __ ____  ______
 2023-01-17 23:33:04,455 INFO  [io.quarkus] (Quarkus Main Thread) quarkus-cache 1.0.0-SNAPSHOT on JVM (powered by Quarkus 2.15.3.Final) started in 1.398s. Listening on: http://localhost:8080
 2023-01-17 23:33:04,465 INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
 2023-01-17 23:33:04,465 INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [cache, cdi, config-yaml, resteasy-reactive, scheduler, smallrye-context-propagation, vertx]
-2023-01-17 23:33:06,289 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoit called
+2023-01-17 23:33:06,289 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoint called
 2023-01-17 23:33:06,297 INFO  [de.tur.GreetingResource] (executor-thread-0) expensive method called
-2023-01-17 23:33:09,172 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoit called
-2023-01-17 23:33:10,407 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoit called
-2023-01-17 23:33:12,342 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoit called
-2023-01-17 23:33:12,653 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoit called
+2023-01-17 23:33:09,172 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoint called
+2023-01-17 23:33:10,407 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoint called
+2023-01-17 23:33:12,342 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoint called
+2023-01-17 23:33:12,653 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoint called
 2023-01-17 23:33:35,005 INFO  [de.tur.GreetingResource] (vert.x-worker-thread-0) cache invalidated
-2023-01-17 23:33:37,331 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoit called
+2023-01-17 23:33:37,331 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoint called
 2023-01-17 23:33:37,332 INFO  [de.tur.GreetingResource] (executor-thread-0) expensive method called
-2023-01-17 23:33:43,519 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoit called
-2023-01-17 23:33:44,075 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoit called
-2023-01-17 23:33:44,495 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoit called
+2023-01-17 23:33:43,519 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoint called
+2023-01-17 23:33:44,075 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoint called
+2023-01-17 23:33:44,495 INFO  [de.tur.GreetingResource] (executor-thread-0) endpoint called
 ```
 
 As we can see, the expensive is only called

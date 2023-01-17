@@ -18,7 +18,7 @@ public class GreetingResource {
   @GET
   @Produces(MediaType.TEXT_PLAIN)
   public String hello() throws InterruptedException {
-    LOGGER.info("endpoit called");
+    LOGGER.info("endpoint called");
     return getGreeting() + " from RESTEasy Reactive";
   }
 
