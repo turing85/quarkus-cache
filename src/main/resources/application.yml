@@ -1,3 +1,7 @@
-cache:
-  greeting:
-    invalidate-every: 30s
+quarkus:
+  cache:
+    caffeine:
+      "greeting":
+        expire-after-write: 30s
+        initial-capacity: 1
+        maximum-size: 1

@@ -1,8 +1,6 @@
 package de.turing85;
 
-import io.quarkus.cache.CacheInvalidate;
 import io.quarkus.cache.CacheResult;
-import io.quarkus.scheduler.Scheduled;
 import java.time.Duration;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -27,14 +25,5 @@ public class GreetingResource {
     LOGGER.info("expensive method called");
     Thread.sleep(Duration.ofSeconds(2).toMillis());
     return "Hello";
-  }
-
-  @Scheduled(
-      identity = "invalidate-greeting-cache",
-      every = "${cache.greeting.invalidate-every}",
-      delayed = "${cache.greeting.invalidate-every}")
-  @CacheInvalidate(cacheName = "greeting")
-  void invalidate() {
-    LOGGER.info("cache invalidated");
   }
 }
