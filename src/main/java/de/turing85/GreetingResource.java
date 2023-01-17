@@ -3,7 +3,7 @@ package de.turing85;
 import io.quarkus.cache.CacheInvalidate;
 import io.quarkus.cache.CacheResult;
 import io.quarkus.scheduler.Scheduled;
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -25,7 +25,7 @@ public class GreetingResource {
   @CacheResult(cacheName = "greeting")
   String getGreeting() throws InterruptedException {
     LOGGER.info("expensive method called");
-    Thread.sleep(TimeUnit.SECONDS.toMillis(2));
+    Thread.sleep(Duration.ofSeconds(2).toMillis());
     return "Hello";
   }
 
