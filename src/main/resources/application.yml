@@ -1,0 +1,3 @@
+cache:
+  greeting:
+    invalidate-every: 30s
