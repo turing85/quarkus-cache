@@ -23,7 +23,7 @@ public class GreetingResource {
   }
 
   @CacheResult(cacheName = "greeting")
-  public String getGreeting() throws InterruptedException {
+  String getGreeting() throws InterruptedException {
     LOGGER.info("expensive method called");
     Thread.sleep(TimeUnit.SECONDS.toMillis(2));
     return "Hello";
@@ -34,7 +34,7 @@ public class GreetingResource {
       every = "${cache.greeting.invalidate-every}",
       delayed = "${cache.greeting.invalidate-every}")
   @CacheInvalidate(cacheName = "greeting")
-  public void invalidate() {
+  void invalidate() {
     LOGGER.info("cache invalidated");
   }
 }
