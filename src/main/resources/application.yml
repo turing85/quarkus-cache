@@ -5,3 +5,4 @@ quarkus:
         expire-after-write: 30s
         initial-capacity: 1
         maximum-size: 1
+        metrics-enabled: true

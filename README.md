@@ -36,3 +36,14 @@ __  ____  __  _____   ___  __ ____  ______
 As we can see, the expensive is only called
 - after application startup, or
 - after the cache has been invalidated.
+
+## Metrics
+To get cache metrics, we have to explicitly enable them on a per-cache basis. In our case, we have to set `quarkus.cache.caffeine."greeting".metrics.enabled=true`. Then, when we visit http://localhost:8080/q/metrics, we see the statistics of cache hits and cache misses:
+```
+cache_gets_total{cache="greeting",result="miss",} 2.0
+cache_gets_total{cache="greeting",result="hit",} 5.0
+...
+cache_puts_total{cache="greeting",} 2.0
+```
+
+(Notice that the entries might appear in a different order)
