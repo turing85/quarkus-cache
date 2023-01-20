@@ -1,10 +1,5 @@
 package de.turing85;
 
-import io.quarkus.cache.CacheInvalidate;
-import io.quarkus.cache.CacheResult;
-import io.quarkus.runtime.Startup;
-import io.quarkus.scheduler.Scheduled;
-import java.time.Duration;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -16,31 +11,16 @@ import org.slf4j.LoggerFactory;
 public class GreetingResource {
   private static final Logger LOGGER = LoggerFactory.getLogger(GreetingResource.class);
 
+  private final CachedGreetingProvider greetingProvider;
+
+  public GreetingResource(CachedGreetingProvider greetingProvider) {
+    this.greetingProvider = greetingProvider;
+  }
+
   @GET
   @Produces(MediaType.TEXT_PLAIN)
-  public String hello() throws InterruptedException {
+  public String hello() {
     LOGGER.info("endpoint called");
-    return getGreeting() + " from RESTEasy Reactive";
-  }
-
-  @Startup
-  @CacheResult(cacheName = "greeting")
-  String getGreeting() throws InterruptedException {
-    LOGGER.info("calling expensive method");
-    Thread.sleep(Duration.ofSeconds(2).toMillis());
-    LOGGER.info("expensive method called");
-    return "Hello";
-  }
-
-  @CacheInvalidate(cacheName = "greeting")
-  void invalidate() {
-    LOGGER.info("invalidate");
-  }
-
-  @Scheduled(cron = "{quarkus.cache.caffeine.greeting.refresh-cron}")
-  void refreshCache() throws InterruptedException {
-    LOGGER.info("refreshing");
-    invalidate();
-    getGreeting();
+    return greetingProvider.getGreeting() + " from RESTEasy Reactive";
   }
 }
