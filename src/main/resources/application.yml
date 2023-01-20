@@ -2,7 +2,11 @@ quarkus:
   cache:
     caffeine:
       "greeting":
-        expire-after-write: 30s
+        refresh-cron: 0/20 * * * * ? *
+        expire-after-write: 10s
         initial-capacity: 1
         maximum-size: 1
         metrics-enabled: true
+  scheduler:
+    metrics:
+      enabled: true

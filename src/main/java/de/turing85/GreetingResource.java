@@ -1,6 +1,9 @@
 package de.turing85;
 
+import io.quarkus.cache.CacheInvalidate;
 import io.quarkus.cache.CacheResult;
+import io.quarkus.runtime.Startup;
+import io.quarkus.scheduler.Scheduled;
 import java.time.Duration;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -20,10 +23,24 @@ public class GreetingResource {
     return getGreeting() + " from RESTEasy Reactive";
   }
 
+  @Startup
   @CacheResult(cacheName = "greeting")
   String getGreeting() throws InterruptedException {
-    LOGGER.info("expensive method called");
+    LOGGER.info("calling expensive method");
     Thread.sleep(Duration.ofSeconds(2).toMillis());
+    LOGGER.info("expensive method called");
     return "Hello";
+  }
+
+  @CacheInvalidate(cacheName = "greeting")
+  void invalidate() {
+    LOGGER.info("invalidate");
+  }
+
+  @Scheduled(cron = "{quarkus.cache.caffeine.greeting.refresh-cron}")
+  void refreshCache() throws InterruptedException {
+    LOGGER.info("refreshing");
+    invalidate();
+    getGreeting();
   }
 }
