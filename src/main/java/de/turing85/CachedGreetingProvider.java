@@ -40,7 +40,7 @@ public final class CachedGreetingProvider implements GreetingProvider {
     LOGGER.info("invalidate");
   }
 
-  @Scheduled(cron = "${quarkus.cache.caffeine.greeting.refresh-cron}")
+  @Scheduled(cron = "${cache.greeting.refresh-cron}")
   void refreshCache() {
     LOGGER.info("refreshing");
     invalidate();
