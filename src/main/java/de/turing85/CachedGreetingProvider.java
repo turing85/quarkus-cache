@@ -41,7 +41,7 @@ public final class CachedGreetingProvider implements GreetingProvider {
   }
 
   @Scheduled(cron = "${cache.greeting.refresh-cron}")
-  void refreshCache() {
+  void refresh() {
     LOGGER.info("refreshing");
     invalidate();
     getGreeting();
