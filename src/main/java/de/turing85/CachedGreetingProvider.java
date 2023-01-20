@@ -9,8 +9,8 @@ import javax.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Startup // Force bean creation on application startup
-@Singleton // using pseudo-scope to prevent proxy-creation and thus double-initialization
+@Startup
+@Singleton
 public final class CachedGreetingProvider implements GreetingProvider {
   private static final Logger LOGGER = LoggerFactory.getLogger(CachedGreetingProvider.class);
 
