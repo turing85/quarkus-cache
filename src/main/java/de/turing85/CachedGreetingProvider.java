@@ -23,6 +23,7 @@ public final class CachedGreetingProvider implements GreetingProvider {
   }
 
   @CacheResult(cacheName = "greeting")
+  @Override
   public String getGreeting() {
     LOGGER.info("calling expensive method");
     try {
