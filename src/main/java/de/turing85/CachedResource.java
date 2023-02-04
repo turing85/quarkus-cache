@@ -1,6 +1,5 @@
 package de.turing85;
 
-import de.turing85.impl.CachedValuesProvider;
 import java.util.Set;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -14,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Slf4j
 public class CachedResource {
-  private final CachedValuesProvider valueProvider;
+  private final ValuesProvider valueProvider;
 
   @GET
   public Set<Long> getValues() {
