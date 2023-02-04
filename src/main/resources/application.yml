@@ -6,6 +6,14 @@ quarkus:
         initial-capacity: 1
         maximum-size: 1
         metrics-enabled: true
+  datasource:
+    db-kind: postgresql
+    jdbc:
+      url: jdbc:postgresql://localhost:5432/data
+    password: data
+    username: data
+  flyway:
+    migrate-at-start: true
   scheduler:
     metrics:
       enabled: true
@@ -13,3 +21,11 @@ quarkus:
 cache:
   greeting:
     refresh-cron: 0/20 * * * * ? *
+
+"%test":
+   quarkus:
+     datasource:
+       db-kind: h2
+       jdbc:
+         driver: org.h2.Driver
+         url: jdbc:h2:tcp://localhost:9092/mem:test
