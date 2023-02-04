@@ -2,7 +2,7 @@ version: "3.7"
 services:
   # postgres + pgadmin4 web UI
   postgres:
-    image: postgres@sha256:${POSTGRES_SHA}
+    image: postgres:15.1-alpine3.17
     volumes:
       - ${LOCAL_DEPLOYMENT_DIR:-.}/postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d/:ro
     environment:
@@ -13,7 +13,7 @@ services:
     ports:
       - "5432:5432"
   pgadmin4:
-    image: dpage/pgadmin4@sha256:${PGADMIN4_SHA}
+    image: dpage/pgadmin4:6.19
     volumes:
       - ${LOCAL_DEPLOYMENT_DIR:-.}/pgadmin4/pgadmin4/servers.json:/pgadmin4/servers.json:ro
     depends_on:
