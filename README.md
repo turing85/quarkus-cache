@@ -10,7 +10,7 @@ Configuration property `quarkus.cache.caffeine."greeting".refresh-cron` configur
 ## Technical details
 Looking at class `CachedGreetingProvider`, we see that it is annotated with:
 * `@Startup` to construct the bean at program startup (i.e. non-lazily, this will then through the constructor pre-heat the cache)
-* `@Singleton`, a pseudo scope, such that no proxy of this class is created, and thus the constructor is not called twice. If we replace `@Singleton` with `@ApplicationScoped`, we will see that the expensive method is called twice, and we suppress this by using a pseudo-scope.
+* `@PostConstruct` on the `preheatCache()`-method to initialize the cache values
 
 ## Starting the application
 Run `quarkus:dev`

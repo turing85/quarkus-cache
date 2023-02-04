@@ -12,11 +12,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
 import java.util.Set;
-import javax.inject.Singleton;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
 import lombok.extern.slf4j.Slf4j;
 
 @Startup
-@Singleton
+@ApplicationScoped
 @Slf4j
 public final class CachedValuesProvider implements ValuesProvider {
   public static final String CACHE_NAME = "values";
@@ -26,9 +27,9 @@ public final class CachedValuesProvider implements ValuesProvider {
   CachedValuesProvider(
       @SuppressWarnings("CdiInjectionPointsInspection") AgroalDataSource dataSource) {
     this.dataSource = dataSource;
-    preheatCache();
   }
 
+  @PostConstruct
   void preheatCache() {
     getValues();
   }

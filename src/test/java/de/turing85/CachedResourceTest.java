@@ -40,13 +40,22 @@ class CachedResourceTest {
     dbExecute("TRUNCATE TABLE public.data");
 
     // WHEN
-    List<Long> actual = when().get()
+    List<Long> firstActual = when().get()
 
     // THEN
         .then()
             .statusCode(Response.Status.OK.getStatusCode())
             .extract().body().as(new TypeRef<>() {});
-    assertThat(actual).isEmpty();
+    assertThat(firstActual).isEmpty();
+
+    // WHEN
+    List<Long> secondActual = when().get()
+
+    // THEN
+        .then()
+            .statusCode(Response.Status.OK.getStatusCode())
+            .extract().body().as(new TypeRef<>() {});
+    assertThat(secondActual).isEmpty();
   }
 
   @Test
